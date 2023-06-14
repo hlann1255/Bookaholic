@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <div class="container">
+        <header class="section-heading">
+            <h3 class="section-title text-primary">Giỏ Hàng</h3>
+        </header><!-- sect-heading -->
+
+        <div class="row">
+            <aside class="col-lg-9">
+                <div class="card card-product-grid border-0 p-4" style="border-radius: 1rem;">
+                    {% for item_cart in cart_items %}
+                    {% if not forloop.first %}
+                    <hr>
+                    {% endif %}
+                    <div class="row m-0 p-0 py-2">
+                        <figure class="itemside align-items-center">
+                            <div class="aside d-none d-sm-inline-block">
+                                <a href="{{item_cart.product.get_url}}">
+                                    <img src="{{item_cart.product.images.url}}" width="160">
+                                </a>
+                            </div>
+                            <figcaption class="w-100 info">
+                                <div class="w-100 d-flex justify-content-between">
+                                    <a class="price" style="font-size: 1.6rem; text-transform: uppercase"
+                                        href="{{item_cart.product.get_url}}">
+                                        {{item_cart.product.product_name}}
+                                    </a>
+                                    <a href="{% url 'remove_cart_item' item_cart.product.id %}" class="btn btn-light">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </div>
+                                <div class="m-0 p-0 mt-2" style="font-size: 1rem;">
+                                    <b>Tác giả:</b> {{item_cart.product.Author}}
+                                    <br>
+                                    <b>Nhà xuất bản:</b> {{item_cart.product.Publishing}}
+                                </div>
+                                <div class="w-100 d-flex justify-content-between">
+                                    <div class="m-0 p-0 price mt-4 text-danger" style="font-size: 1.6rem;">
+                                        {{item_cart.product.price}} VND
+                                    </div>
+                                    <div class="m-0 p-0 price mt-4 input-group input-spinner">
+                                        <div class="input-group-prepend">
+                                            <a href="{% url 'remove_cart' item_cart.product.id%}" class="btn btn-light"
+                                                type="button" id="button-plus">
+                                                <i class="fa fa-minus"></i>
+                                            </a>
+                                        </div>
+                                        <a class="btn btn-light rounded-0">
+                                            {{item_cart.quantity}}
+                                        </a>
+                                        <div class="input-group-append">
+                                            <a href="{% url 'add_cart' item_cart.product.id %}" class="btn btn-light"
+                                                type="button" id="button-minus">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endfor %}
+                </div> <!-- card.// -->
+            </aside> <!-- col.// -->
+            <aside class="col-lg-3 mt-4 m-lg-0">
+                <div class="card card-product-grid border-0" style="border-radius: 1rem;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <p class="m-0 p-0"><b>Tổng cộng:</b></p>
+                            <p class="m-0 p-0 text-right text-primary">{{total}} VND</p>
+                        </div>
+                        <hr>
+                        <a href="{% url 'checkout'%}" class="btn btn-primary btn-block">Xác nhận giỏ hàng</a>
+                        <a href="{% url 'home' %}" class="btn btn-outline-primary btn-block">Tiếp tục mua hàng</a>
+                    </div> <!-- card-body.// -->
+                </div> <!-- card.// -->
+            </aside> <!-- col.// -->
+        </div> <!-- row.// -->
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}

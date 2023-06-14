@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+	<div class="container">
+		<header class="section-heading">
+			<h3 class="section-title text-primary">Thông Tin Chung</h3>
+		</header><!-- sect-heading -->
+
+		<div class="row">
+			<div class="card card-product-grid border-0 w-100 p-4" style="border-radius: 1rem;">
+				<div class="row m-0 p-0">
+					<div class="col-lg-auto m-0 p-0 d-flex justify-content-center">
+						<img src={{single_product.images.url}} width="260">
+					</div>
+					<div class="col-lg m-0 p-0">
+						<figcaption class="info-wrap px-0">
+							<p class="price" style="font-size: 2.2rem; text-transform: uppercase">
+								{{single_product.product_name}}
+							</p>
+							<div class="row m-0 p-0 mt-2" style="font-size: 1.2rem;">
+								<div class="col-lg-6 m-0 p-0 title">
+									<b>Tác giả:</b> {{single_product.Author}}
+								</div>
+								<div class="col-lg-6 m-0 p-0 title">
+									<b>Nhà xuất bản:</b> {{single_product.Publishing}}
+								</div>
+							</div>
+							<div class="row m-0 p-0 price mt-4 text-danger" style="font-size: 2.2rem;">
+								{{single_product.price}} VND
+							</div>
+							{% if single_product.stock <= 0 %}
+							<a class="btn btn-danger text-white mt-4" style="font-size: 1.4rem;">
+								Hết hàng!
+							</a>
+							{% else %}
+							<a href="{% url 'add_cart' single_product.id%}"
+								class="btn btn-primary mt-4" style="font-size: 1.4rem;">
+								<span>Thêm vào giỏ hàng</span>
+							</a>
+							{% endif %}
+						</figcaption>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<header class="section-heading">
+			<h3 class="section-title text-primary">Mô Tả Sản Phẩm</h3>
+		</header><!-- sect-heading -->
+
+		<div class="row">
+			<div class="card card-product-grid border-0 w-100 p-4" style="border-radius: 1rem;">
+				<figcaption class="info-wrap" style="font-size: 1.2rem;">
+					{{single_product.description}}
+				</figcaption>
+			</div>
+		</div>
+	</div> <!-- col.// -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock%}

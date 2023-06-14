@@ -1,0 +1,37 @@
+{% load static %}
+
+<footer class="p-4 m-0 container-fluid section-footer bg-primary">
+	<div class="row mt-4 mt-md-0">
+		<div class="col-md-auto p-0 m-0 px-4 d-none d-md-flex">
+			<img src="{% static 'images/logo-inverse.png'%}" width="80" alt="">
+		</div>
+		<div class="col-md position-relative p-0 m-0">
+			<h2 class="position-absolute p-0 m-0" style="bottom: -0.5rem;">
+				<a class="text-white" href="{% url "home" %}">BOOKAHOLIC</a>
+			</h2>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-md-auto p-0 m-0 px-4">
+			<div style="width: 80px;"></div>
+		</div>
+		<div class="col-md p-0 pt-2 m-0" style="font-size: 20px;">
+			<a class="text-white" href="{% url "policy" %}">Giới thiệu</a>
+		</div>
+		<div class="col-md p-0 pt-2 m-0" style="font-size: 20px;">
+			<a class="text-white" href="{% url "policy" %}">Chính sách vận chuyển</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-auto p-0 m-0 px-4">
+			<div style="width: 80px;"></div>
+		</div>
+		<div class="col-md p-0 pt-2 m-0" style="font-size: 20px;">
+			<a class="text-white" href="{% url "policy" %}">Hình thức thanh toán</a>
+		</div>
+		<div class="col-md p-0 pt-2 m-0" style="font-size: 20px;">
+			<a class="text-white" href="{% url "policy" %}">Quy trình đổi, trả và hủy đơn hàng</a>
+		</div>
+	</div>
+</footer> <!-- //container -->
+<!-- ========================= FOOTER END // ========================= -->

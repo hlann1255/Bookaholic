@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <div class="container">
+        <header class="section-heading">
+            <h3 class="section-title text-primary">Giỏ Hàng</h3>
+        </header><!-- sect-heading -->
+        <div class="w-100 row m-0 p-0">
+            <div class="w-100 card card-product-grid border-0 bg-primary" style="border-radius: 1rem;">
+                <div class="card-body">
+                    <h1 class="py-4 text-center text-white">
+                        Thanh Toán Thành Công!
+                    </h1>
+                </div> <!-- card-body.// -->
+            </div> <!-- card.// -->
+        </div> <!-- col.// -->
+        <div class="w-100 row m-0 p-0">
+            <div class="w-100 card card-product-grid border-0 p-4" style="border-radius: 1rem;">
+                <div class="row m-0 p-0">
+                    <div class="col-8 col-md-6 m-0 p-0">
+                        <h5 class="text-primary">Sản phẩm</h5>
+                    </div>
+                    <div class="col-2 d-none d-md-flex m-0 p-0 justify-content-center align-items-center">
+                        Đơn giá
+                    </div>
+                    <div class="col-2 d-none d-md-flex m-0 p-0 justify-content-center align-items-center">
+                        Số lượng
+                    </div>
+                    <div class="col-4 col-md-2 d-flex d-md-flex m-0 p-0 justify-content-center align-items-center">
+                        Thành tiền
+                    </div>
+                </div>
+                {% for item_cart in cart_items %}
+                <div class="row m-0 p-0 py-2">
+                    <div class="col-8 col-md-6 m-0 p-0">
+                        <a class="d-none d-sm-inline-block" href="{{item_cart.product.get_url}}">
+                            <img src="{{item_cart.product.images.url}}" width="60">
+                        </a>
+                        <a style="text-transform: uppercase" href="{{item_cart.product.get_url}}">
+                            {{item_cart.product.product_name}}
+                        </a>
+                    </div>
+                    <div class="col-2 d-none d-md-flex m-0 p-0 justify-content-center align-items-center">
+                        {{item_cart.product.price}} VND
+                    </div>
+                    <div class="col-2 d-none d-md-flex m-0 p-0 justify-content-center align-items-center">
+                        {{item_cart.quantity}}
+                    </div>
+                    <div class="col-4 col-md-2 d-flex d-md-flex m-0 p-0 justify-content-center align-items-center">
+                        {{item_cart.product.price}} VND
+                    </div>
+                </div>
+                {% endfor %}
+            </div> <!-- card.// -->
+        </div> <!-- row.// -->
+        <div class="w-100 row m-0 p-0">
+            <div class="w-100 card card-product-grid border-0" style="border-radius: 1rem;">
+                <div class="card-body">
+                    <div class="pb-1 d-flex justify-content-end">
+                        <button href="{% url 'checkout_success'%}" class="btn btn-primary" style="width: 12rem;">
+                            Đã nhận hàng
+                        </button>
+                    </div>
+                    <div class="pt-1 d-flex justify-content-end">
+                        <button href="{% url 'policy'%}" class="btn btn-outline-primary"
+                            style="width: 12rem;">
+                            Liên hệ Bookaholic
+                        </button>
+                    </div>
+                </div> <!-- card-body.// -->
+            </div> <!-- card.// -->
+        </div> <!-- col.// -->
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}

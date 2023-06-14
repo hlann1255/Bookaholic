@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <div class="container">
+        <header class="section-heading">
+            <h3 class="section-title text-primary">Thông tin cá nhân</h3>
+        </header><!-- sect-heading -->
+
+        <div class="w-100 row m-0 p-0">
+            <div class="w-100 card card-product-grid border-0 p-4" style="border-radius: 1rem;">
+                <div class="row m-0 p-0">
+                    <div class="col-8 col-md-6 m-0 p-0">
+                        <h5 class="text-primary">Họ tên:</h5>
+                        <h5 class="text-primary">Email:</h5>
+                        <h5 class="text-primary">Số điện thoại:</h5>
+                    </div>
+                    <div class="col-8 col-md-6 m-0 p-0">
+                        <h5 class=>{{user.first_name}} {{user.last_name}}</h5>
+                        <h5 class=>{{user.email}}</h5>
+                        <h5 class=>{{user.phone_number}}</h5>
+                    </div>
+                </div>
+            </div> <!-- card.// -->
+        </div> <!-- row.// -->
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}

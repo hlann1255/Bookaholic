@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+	<div class="container">
+		<header class="section-heading">
+			<h3 class="section-title text-primary">Tất Cả Sản Phẩm</h3>
+		</header><!-- sect-heading -->
+
+		<div class="row">
+			{% for product in products %}
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="card card-product-grid border-0 w-100 py-4 pr-4" style="border-radius: 1rem;">
+                    <div class="row m-0 p-0" style="min-height: 10rem;">
+                        <div class="col-6 m-0 p-0">
+                            <a href="{{product.get_url}}">
+                                <img src={{product.images.url}} width="100%">
+                            </a>
+                        </div>
+                        <div class="col-6 m-0 p-0 position-relative">
+                            <figcaption class="info-wrap px-0 pb-0">
+                                <a href="{{product.get_url}}" class="price">
+                                    {{product.product_name}}
+                                </a>
+                                <div class="title mt-1 d-none d-sm-block d-md-none d-lg-block">
+                                    {{product.Author}}
+                                </div>
+                                <div class="price text-primary mt-1">{{product.price}} VND</div>
+                                <div class="position-absolute" style="right: 0; bottom: 0;">
+                                    <a href="{{product.get_url}}" class="btn btn-primary mr-1">
+                                        <i class="fas fa-book-open"></i>
+                                    </a>
+                                    <a href="{% url 'add_cart' product.id %}" class="btn btn-primary ml-1">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            </figcaption>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- col.// -->
+			{% endfor %}
+		</div> <!-- row.// -->
+	</div><!-- container // -->
+</section>
+<!-- ========================= SECTION  END// ========================= -->
+</body>
+
+</html>
+{% endblock %}
